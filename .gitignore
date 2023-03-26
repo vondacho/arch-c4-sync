@@ -1,0 +1,4 @@
+.idea
+.gradle
+build
+/dist/c4-sync.jar

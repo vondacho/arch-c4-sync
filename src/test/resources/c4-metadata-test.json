@@ -1,0 +1,41 @@
+{
+  "components": {
+    "recco2": {
+      "owner": "Lumberjacks",
+      "classification": {
+        "service_type": "Core API Product",
+        "app_type": "API"
+      },
+      "documentation": {
+        "url": "https://github.com/edgelaboratories/recco/blob/master/README.md"
+      },
+      "dependencies": {
+        "components": [
+          "consul",
+          "graphite",
+          "arcanist",
+          "splinter",
+          "cerberus",
+          "forecast",
+          "themis",
+          "adam"
+        ],
+        "data": {
+          "postgresql": {
+            "main": [
+              "recco"
+            ]
+          },
+          "rabbitmq": {
+            "main": [
+              "maestro.event.pricing.ingested.recco2",
+              "maestro.event.run.validated.recco2",
+              "maestro.command.price-asset.maestro",
+              "recco2.event.assets-requested.maestro"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

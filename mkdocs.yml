@@ -1,0 +1,12 @@
+site_name: C4 synchronizer
+site_url: https://vondacho.github.io/arch-c4-sync/
+repo_url: https://github.com/vondacho/arch-c4-sync/
+repo_name: GitHub repository
+docs_dir: doc
+
+nav:
+  - Home: index.md
+  - Use cases: usecases.md
+  - Requirements: requirements.md
+  - Architecture: architecture.md
+  - Testing: testing.md

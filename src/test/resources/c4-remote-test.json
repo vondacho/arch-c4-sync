@@ -1,0 +1,31 @@
+{
+  "name": "remote.workspace.name",
+  "description": "remote.workspace.description",
+  "model": {
+    "enterprise": {
+      "name": "remote.workspace.model.enterprise.name"
+    },
+    "people" : [ {
+      "id" : "1",
+      "tags" : "Element,Person",
+      "name" : "test.person",
+      "description" : "A test person external to the system",
+      "relationships" : [ {
+        "id" : "3",
+        "tags" : "Relationship,Query",
+        "sourceId" : "1",
+        "destinationId" : "2",
+        "description" : "queries data",
+        "technology" : "technology"
+      } ],
+      "location" : "Unspecified"
+    } ],
+    "softwareSystems" : [ {
+      "id" : "2",
+      "tags" : "Element,Software System",
+      "name" : "test.system",
+      "description" : "A test system",
+      "location" : "Internal"
+    } ]
+  }
+}
