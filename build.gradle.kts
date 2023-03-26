@@ -30,7 +30,7 @@ ext {
 
 configurations.all {
     resolutionStrategy {
-        force("org.jetbrains.kotlin:kotlin-reflect:1.6.10")
+        force("org.jetbrains.kotlin:kotlin-reflect:1.8.10")
     }
 }
 
