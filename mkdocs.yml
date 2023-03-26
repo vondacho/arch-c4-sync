@@ -10,3 +10,15 @@ nav:
   - Requirements: requirements.md
   - Architecture: architecture.md
   - Testing: testing.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - toc:
+      permalink: True
+
+theme: material
+
+extra_css:
+  - stylesheets/colors.css
