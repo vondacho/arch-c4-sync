@@ -58,16 +58,16 @@ To synchronize a remote C4-model hosted in a Structurizr cloud account with a lo
 ### With Docker
 
 ```
-docker run -v `pwd`:`pwd` -w `pwd` edgelab/arch-c4-sync c4-sync -download <workspace-id> <api-key> <api-secret> -print
-docker run -v `pwd`:`pwd` -w `pwd` edgelab/arch-c4-sync c4-sync -download <workspace-id> <api-key> <api-secret> -dsl doc/c4/dsl -metadata metadata.yaml -broker -relationshipinfer -viewgen service -viewenrich -viewclean -upload
-docker run -v `pwd`:`pwd` -w `pwd` edgelab/arch-c4-sync c4-sync-default <workspace-id> <api-key> <api-secret>
+docker run -v `pwd`:`pwd` -w `pwd` noia/arch-c4-sync c4-sync -download <workspace-id> <api-key> <api-secret> -print
+docker run -v `pwd`:`pwd` -w `pwd` noia/arch-c4-sync c4-sync -download <workspace-id> <api-key> <api-secret> -dsl doc/c4/dsl -metadata metadata.yaml -broker -relationshipinfer -viewgen service -viewenrich -viewclean -upload
+docker run -v `pwd`:`pwd` -w `pwd` noia/arch-c4-sync c4-sync-default <workspace-id> <api-key> <api-secret>
 ```
 
 ### Contribute to EL documentation hub
 
-- [Contribute](https://www.structurizr.com/share/55008/10784baf-a723-4d68-9272-ba810cd6ccc1/diagrams#c4-contribute)
-- [Create diagrams using DSL](https://www.structurizr.com/share/55008/10784baf-a723-4d68-9272-ba810cd6ccc1/diagrams#c4-create-with-dsl)
-- [Create diagrams using Editor](https://www.structurizr.com/share/55008/10784baf-a723-4d68-9272-ba810cd6ccc1/diagrams#c4-create-with-editor)
+- [Contribute](https://www.structurizr.com/share/38199/diagrams#c4-contribute)
+- [Create diagrams using DSL](https://www.structurizr.com/share/38199/diagrams#c4-create-with-dsl)
+- [Create diagrams using Editor](https://www.structurizr.com/share/38199/diagrams#c4-create-with-editor)
 
 ### CI pipeline use
 
@@ -76,21 +76,19 @@ Every project is a contributor from its local `doc/c4/dsl` directory.
 ```
 #!groovy
 
-@Library('EdgeLabJenkins@master') _
-
 node('default') {
     stage("Checkout") {
         checkout scm
     }
-    stageWhen("C4", full_workflow) {
+    stage("C4") {
         docker.withRegistry("https://${env.AWS_CONTAINER_REGISTRY}") {
             withCredentials([usernamePassword(
-                credentialsId: 'edgelab-structurizr',
+                credentialsId: 'noia-structurizr',
                 usernameVariable: 'structurizr_api_key',
                 passwordVariable: 'structurizr_api_secret')]) {
 
-                docker.image("${env.AWS_CONTAINER_REGISTRY}/edgelab/arch-c4-sync:latest").inside {
-                    sh "c4-sync-default-el ${structurizr_api_key} ${structurizr_api_secret}"
+                docker.image("${env.AWS_CONTAINER_REGISTRY}/noia/arch-c4-sync:latest").inside {
+                    sh "c4-sync-default 38199 ${structurizr_api_key} ${structurizr_api_secret}"
                 }
             }
         }
