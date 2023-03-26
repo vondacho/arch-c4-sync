@@ -29,7 +29,7 @@ The logical layers are organized like an onion.
 
 ## Deployment
 
-[DockerHub](https://hub.docker.com/r/noia/arch-c4-sync)
+[DockerHub](https://hub.docker.com/r/vondacho/arch-c4-sync)
 
 ## Monitoring
 ## Alerting
