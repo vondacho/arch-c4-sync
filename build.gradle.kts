@@ -33,7 +33,7 @@ dependencies {
     implementation("com.structurizr:structurizr-dsl:${property("structurizr-dsl.version")}")
     implementation("commons-logging:commons-logging:1.2")
 
-    runtimeOnly("org.apache.httpcomponents.client5:httpclient5:5.1.2")
+    runtimeOnly("org.apache.httpcomponents.client5:httpclient5:5.2.1")
     runtimeOnly("javax.xml.bind:jaxb-api:2.3.1")
 
     implementation("ch.qos.logback:logback-classic:${property("logback.version")}")
