@@ -3,6 +3,7 @@ plugins {
     id("com.google.cloud.tools.jib").version("3.3.1")
     id("io.gitlab.arturbosch.detekt").version("1.22.0")
     id("io.qameta.allure").version("2.11.2")
+    id("net.saliman.properties").version("1.5.2")
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -106,7 +107,12 @@ jib {
         image = "gcr.io/distroless/java:11-debug"
     }
     to {
+        image = "ghcr.io/edu.obya/arch-c4-sync"
         tags = properties["version"]?.let { mutableSetOf(it as String, "latest") } ?: mutableSetOf("latest")
+        auth {
+            username = properties["githubUsername"]?.toString()
+            password = properties["githubToken"]?.toString()
+        }
     }
     container {
         entrypoint = mutableListOf("")
