@@ -1,4 +1,4 @@
-name: publish
+name: publish release
 
 on:
   workflow_dispatch: # Allow to manually trigger the pipeline
@@ -20,13 +20,6 @@ jobs:
         with:
           java-version: '17'
           distribution: zulu
-
-      - name: Setup Build
-        env:
-          GITHUB_USERNAME: ${{ env.GITHUB_ACTOR }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          ./.github/scripts/setup-gradle.sh
 
       - name: Release version
         id: release
