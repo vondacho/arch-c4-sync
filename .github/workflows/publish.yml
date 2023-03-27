@@ -42,4 +42,4 @@ jobs:
       - name: Build and Push Docker images
         env:
           RELEASE_VER: ${{ steps.release.outputs.version }}
-        run: ./gradlew jibDockerBuild
+        run: ./gradlew jar jibDockerBuild
