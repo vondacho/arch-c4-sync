@@ -43,3 +43,6 @@ jobs:
         env:
           RELEASE_VER: ${{ steps.release.outputs.version }}
         run: ./gradlew jar jibDockerBuild
+
+      - name: Deploy to GH pages
+        uses: ./.github/actions/mkdocs-publish
