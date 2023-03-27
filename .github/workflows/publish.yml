@@ -33,7 +33,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and Push Docker images
-        run: ./gradlew -Pversion=${{ steps.release.outputs.version }} jar jibDockerBuild
+        run: ./gradlew -P${{ steps.release.outputs }} jar jibDockerBuild
 
       - name: Deploy to GH pages
         uses: ./.github/actions/mkdocs-publish
