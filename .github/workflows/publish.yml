@@ -23,7 +23,7 @@ jobs:
 
       - name: Release version
         id: release
-        run: echo "version=$(echo \"${{ github.ref }}\" | cut -d \"/\" -f3)" >> $GITHUB_OUTPUT
+        run: echo "version=$(echo \"${{ github.ref }}\" | cut -d \"/\" -f3)" >> ${{ github.output }}
 
       - name: "Hello world"
         run: echo "${{ github.actor }}, ${{ secrets.GITHUB_TOKEN }}, ${{ github.ref }}, ${{ steps.release.outputs.version }}"
