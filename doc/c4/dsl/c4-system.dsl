@@ -205,7 +205,6 @@ workspace "*" "*" {
                 width  250
                 background #ffffff
                 color #000000
-                icon file.png
             }
             relationship "Relationship" {
                 routing Curved
