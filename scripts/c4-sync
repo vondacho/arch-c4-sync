@@ -1,2 +1,2 @@
 #!/bin/bash
-exec java -cp "/app/resources:/app/classes:/app/libs/*" edu.obya.c4.appl.SynchronizeAppKt "$@"
+exec java -jar arch-c4-sync.jar "$@"

@@ -107,7 +107,7 @@ jib {
         image = "gcr.io/distroless/java:11-debug"
     }
     to {
-        image = "ghcr.io/edu.obya/arch-c4-sync"
+        image = "ghcr.io/vondacho/arch-c4-sync"
         tags = properties["version"]?.let { mutableSetOf(it as String, "latest") } ?: mutableSetOf("latest")
         auth {
             username = properties["githubUsername"]?.toString()
