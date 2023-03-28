@@ -2,7 +2,7 @@
 # $1: structurizr_workspace_id
 # $2: structurizr_api_key
 # $3: structurizr_api_secret
-exec java -jar arch-c4-sync.jar \
+exec java -jar /usr/local/bin/arch-c4-sync.jar \
 -download "$1" "$2" "$3" \
 -dsl doc/c4/dsl \
 -metadata metadata.yaml \
