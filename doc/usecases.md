@@ -35,7 +35,7 @@ To synchronize a remote C4-model hosted in a Structurizr cloud account with a lo
 - Describe your local C4-model into a model file.
     - using [Structurizr-DSL](https://github.com/structurizr/dsl/blob/master/docs/language-reference.md) format
     - using [Structurizr-JSON](https://structurizr.com/json) format
-- Example `java -cp build/libs/arch-c4-sync.jar -download <workspace-id> <api-key> <api-secret> -dsl doc/c4/dsl/sample.dsl -upload`
+- Example `java -jar build/libs/arch-c4-sync.jar -download <workspace-id> <api-key> <api-secret> -dsl doc/c4/dsl/sample.dsl -upload`
 - Visualize your remote C4-model online on [Structurizr](https://www.structurizr.com/workspace/<workspace-id>)
 
 ### Options
@@ -58,9 +58,9 @@ To synchronize a remote C4-model hosted in a Structurizr cloud account with a lo
 ### With Docker
 
 ```
-docker run -v `pwd`:`pwd` -w `pwd` vondacho/arch-c4-sync c4-sync -download <workspace-id> <api-key> <api-secret> -print
-docker run -v `pwd`:`pwd` -w `pwd` vondacho/arch-c4-sync c4-sync -download <workspace-id> <api-key> <api-secret> -dsl doc/c4/dsl -metadata metadata.yaml -broker -relationshipinfer -viewgen service -viewenrich -viewclean -upload
-docker run -v `pwd`:`pwd` -w `pwd` vondacho/arch-c4-sync c4-sync-default <workspace-id> <api-key> <api-secret>
+docker run -v `pwd`:`pwd` -w `pwd` ghcr.io/vondacho/arch-c4-sync c4-sync -download <workspace-id> <api-key> <api-secret> -print
+docker run -v `pwd`:`pwd` -w `pwd` ghcr.io/vondacho/arch-c4-sync c4-sync -download <workspace-id> <api-key> <api-secret> -dsl doc/c4/dsl -metadata metadata.yaml -broker -relationshipinfer -viewgen service -viewenrich -viewclean -upload
+docker run -v `pwd`:`pwd` -w `pwd` ghcr.io/vondacho/arch-c4-sync c4-sync-default <workspace-id> <api-key> <api-secret>
 ```
 
 ### Contribute to documentation hub
@@ -81,13 +81,13 @@ node('default') {
         checkout scm
     }
     stage("C4") {
-        docker.withRegistry("https://${env.AWS_CONTAINER_REGISTRY}") {
+        docker.withRegistry("https://ghcr.io") {
             withCredentials([usernamePassword(
                 credentialsId: 'vondacho-structurizr',
                 usernameVariable: 'structurizr_api_key',
                 passwordVariable: 'structurizr_api_secret')]) {
 
-                docker.image("${env.AWS_CONTAINER_REGISTRY}/vondacho/arch-c4-sync:latest").inside {
+                docker.image("ghcr.io/vondacho/arch-c4-sync:latest").inside {
                     sh "c4-sync-default 38199 ${structurizr_api_key} ${structurizr_api_secret}"
                 }
             }

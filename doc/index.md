@@ -18,5 +18,5 @@ The scheduling of human intervention is managed by a process.
 
 ## Getting started
 
-- To build the project with `gradle build fatJar`
+- To build the project with `gradle jar`
 - To create your private free account on [Structurizr](https://www.structurizr.com/signup)
