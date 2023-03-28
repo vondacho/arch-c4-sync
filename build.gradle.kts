@@ -65,8 +65,6 @@ detekt {
 allure {
     adapter.aspectjWeaver.set(true)
     adapter.autoconfigure.set(true)
-    //resultsDir = file("$buildDir/reports/test/allure-results")
-    //reportDir = file("$buildDir/reports/test/allure")
 }
 
 tasks {
@@ -82,49 +80,17 @@ tasks {
     withType<io.gitlab.arturbosch.detekt.Detekt> {
         jvmTarget = "11"
     }
-
     withType<Jar> {
-        // Otherwise you'll get a "No main manifest attribute" error
         manifest {
             attributes(
                 "Main-Class" to "edu.obya.c4.appl.SynchronizeAppKt"
             )
         }
-        // To avoid the duplicate handling strategy error
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-        // To add all of the dependencies
         from(sourceSets.main.get().output)
-
         dependsOn(configurations.runtimeClasspath)
         from({
             configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
         })
-    }
-}
-
-jib {
-    from {
-        image = "gcr.io/distroless/java:11-debug"
-    }
-    to {
-        image = "ghcr.io/vondacho/arch-c4-sync"
-        tags = properties["version"]?.let { mutableSetOf(it as String, "latest") } ?: mutableSetOf("latest")
-        auth {
-            username = properties["githubUsername"]?.toString()
-            password = properties["githubToken"]?.toString()
-        }
-    }
-    container {
-        entrypoint = mutableListOf("")
-        args = mutableListOf("/usr/local/bin/c4-sync")
-    }
-    extraDirectories {
-        paths {
-            path {
-                setFrom("./scripts")
-                into = "/usr/local/bin"
-            }
-        }
-        this.permissions.set(mapOf("/usr/local/bin/*" to "755"))
     }
 }
