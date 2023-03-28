@@ -1,8 +1,3 @@
-#FROM alpine:latest AS builder
-#
-# In case you need more complex build steps (for example compile some libs or some resources)
-# this should be done in a builder layer.
-#
 FROM azul/zulu-openjdk-alpine:17-jre
 
 RUN apk --no-cache add bash \
