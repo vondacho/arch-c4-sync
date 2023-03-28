@@ -1,7 +1,16 @@
-#!/busybox/sh
-
+#!/bin/bash
 # $1: structurizr_workspace_id
 # $2: structurizr_api_key
 # $3: structurizr_api_secret
-
-exec java -cp "/app/resources:/app/classes:/app/libs/*" edu.obya.c4.appl.SynchronizeAppKt -download "$1" "$2" "$3" -dsl doc/c4/dsl -metadata metadata.yaml -broker -componentenrich -relationshipinfer -relationshipenrich -viewgen service -viewenrich -viewclean -upload
+exec java -cp "/app/resources:/app/classes:/app/libs/*"  edu.obya.c4.appl.SynchronizeAppKt  \
+-download "$1" "$2" "$3"  \
+-dsl doc/c4/dsl  \
+-metadata metadata.yaml  \
+-broker  \
+-componentenrich  \
+-relationshipinfer  \
+-relationshipenrich  \
+-viewgen service  \
+-viewenrich  \
+-viewclean  \
+-upload
