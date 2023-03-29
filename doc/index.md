@@ -4,7 +4,7 @@ A Kotlin project for synchronizing several corporate C4-compliant Structurizr mo
 to a C4 documentation hub hosted on Structurizr cloud for 3D-visualization.
 
 This software architectural documentation engine proposes to gather the information elements related to the different
-layers of the C4 model for the Edgelab enterprise system, and then publish them on a Structurizr Cloud account for visualization.
+layers of the C4 model for one corporate system, and then publish them on a corporate Structurizr Cloud account for visualization.
 
 Concretely, the C4 data elements with their relationships come from manual input and automatic search operations.
 For example, the product owners are responsible for the maintenance of layers C1 (context) and C2 (business containers);

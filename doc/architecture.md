@@ -21,7 +21,6 @@ The logical layers are organized like an onion.
 
 ### Stacks, libraries, frameworks
 
-- JDK 17
 - Kotlin 1.8.x
 - [Gradle 7.5](https://docs.gradle.org/current/userguide/userguide.html)
 - [Allure](https://docs.qameta.io/allure/)
@@ -29,11 +28,8 @@ The logical layers are organized like an onion.
 
 ## Deployment
 
-[Github packages](https://ghcr.io/vondacho/arch-c4-sync)
+[Github packages](https://github.com/vondacho/arch-c4-sync/pkgs/container/arch-c4-sync)
 
-## Monitoring
-## Alerting
-## Security
 ## CICD
 
-## Decision records
+[Github actions](https://github.com/vondacho/arch-c4-sync/actions)

@@ -83,7 +83,7 @@ node('default') {
     stage("C4") {
         docker.withRegistry("https://ghcr.io") {
             withCredentials([usernamePassword(
-                credentialsId: 'vondacho-structurizr',
+                credentialsId: 'structurizr_username',
                 usernameVariable: 'structurizr_api_key',
                 passwordVariable: 'structurizr_api_secret')]) {
 
