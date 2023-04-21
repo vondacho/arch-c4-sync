@@ -1,0 +1,30 @@
+components:
+  noia:
+    owner: vondacho.github.io
+
+    classification:
+      service_type: Core API Product
+      app_type: API
+
+    documentation:
+      url: "https://vondacho.github.io/noia"
+
+    dependencies:
+      components:
+        - service-1
+        - service-2
+        - consul
+        - jaeger
+        - logstash
+        - prometheus
+
+      data:
+        postgresql:
+          main:
+            - noia
+
+        rabbitmq:
+          main:
+            - other.command.remind-debtors
+            - noia.event.client.created
+            - noia.event.invoice.paid
